@@ -11,8 +11,8 @@ using std::ostream;
 class Song
 {
 public:
-  inline void initialize();
-  inline void initialize(const string & title, const string & artist);
+  Song(): artist_("none"), title_("invalid") {}
+  Song(const string & title, const string & artist): title_(title), artist_(artist) {}
 
   inline void print(ostream & out) const;
   inline bool is_equal(const Song & other) const;
@@ -21,18 +21,6 @@ private:
   string artist_;
   string title_;
 };
-
-inline void Song::initialize()
-{
-  artist_ = "none";
-  title_ = "invalid";
-}
-
-inline void Song::initialize(const string & title, const string & artist)
-{
-  title_ = title;
-  artist_ = artist;
-}
 
 inline void Song::print(ostream & out) const
 {
