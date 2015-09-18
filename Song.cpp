@@ -18,6 +18,7 @@ public:
   inline bool is_equal(const Song & other) const;
 
   string artist() const {return artist_;}
+  string title() const {return title_; }
 
 private:
   string artist_;
