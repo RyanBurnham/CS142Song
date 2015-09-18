@@ -35,6 +35,7 @@ inline void Song::operator=(const Song & value)
 inline ostream & operator<<(ostream & out, const Song & song)
 {
   out << song.title() << endl << song.artist() << endl;
+  return out;
 }
 
 inline bool Song::is_equal(const Song & song2) const
@@ -68,10 +69,7 @@ int main()
     else
       cout << "They are different songs." << endl;
 
-    cout << "The first song is:\n";
-    cout <<song1;
-    cout << "The second song is:\n";
-    cout << song2;
+    cout << "The first song is:\n" << song1 << "The second song is:\n" << song2;
 
     cout << "Copying song1 to song 2" << endl;
     song1 = song2;
@@ -81,8 +79,7 @@ int main()
     else
       cout << "They are different songs." << endl;
 
-    cout << "Song1: " << song1;
-    cout << "Song2: " << song2;
+    cout << "Song1: " << song1 << "Song2: " << song2;
 
     cout << "RESTARTING TEST\n";
   }
