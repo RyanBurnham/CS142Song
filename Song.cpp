@@ -17,7 +17,7 @@ public:
   Song(): artist_("none"), title_("invalid") {}
   Song(const string & title, const string & artist): title_(title), artist_(artist) {}
 
-  inline bool is_equal(const Song & other) const;
+  inline bool operator==(const Song & other) const;
 
   inline void operator=(const Song & value);
 
@@ -46,7 +46,7 @@ inline ostream & operator<<(ostream & out, const Song & song)
   return out;
 }
 
-inline bool Song::is_equal(const Song & song2) const
+inline bool Song::operator==(const Song & song2) const
 {
   return title_ == song2.title_ && artist_ == song2.artist_;
 }
@@ -61,13 +61,13 @@ int main()
     Song song1;
     Song song2;
 
-    cout << "Enter a song, title then author denoted by enter: ";
+    cout << "Enter a song, artist then title denoted by enter: ";
     cin >> song1;
 
-    cout << "Enter a song, title then author denoted by enter: ";
+    cout << "Enter a song, artist then title denoted by enter: ";
     cin >> song2;
 
-    if(song1.is_equal(song2))
+    if(song1 == song2)
       cout << "They are the same song." << endl;
     else
       cout << "They are different songs." << endl;
@@ -77,13 +77,12 @@ int main()
     cout << "Copying song1 to song 2" << endl;
     song1 = song2;
 
-    if(song1.is_equal(song2))
+    if(song1 == song2)
       cout << "They are the same song." << endl;
     else
       cout << "They are different songs." << endl;
 
     cout << "Song1: " << song1 << "Song2: " << song2;
-
 
     cout << "RESTARTING TEST\n";
   }
