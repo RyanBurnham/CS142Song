@@ -17,6 +17,8 @@ public:
   inline void print(ostream & out) const;
   inline bool is_equal(const Song & other) const;
 
+  string artist() const {return artist_;}
+
 private:
   string artist_;
   string title_;
