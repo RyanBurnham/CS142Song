@@ -24,10 +24,18 @@ public:
   string artist() const {return artist_;}
   string title() const {return title_; }
 
+  inline void set(const string & title, const string & artist);
+
 private:
   string artist_;
   string title_;
 };
+
+inline void Song::set(const string & title, const string & artist)
+{
+    artist_ = artist;
+    title_ = title;
+}
 
 inline istream & operator>>(istream & in, Song & s)
 {
