@@ -10,6 +10,9 @@ using std::ostream;
 
 class Song
 {
+
+    friend istream & operator>>(istream & in, Song & s);
+
 public:
   Song(): artist_("none"), title_("invalid") {}
   Song(const string & title, const string & artist): title_(title), artist_(artist) {}
@@ -25,6 +28,11 @@ private:
   string artist_;
   string title_;
 };
+
+inline istream & operator>>(istream & in, Song & s)
+{
+    in >> s.artist_ >> s.title_;
+}
 
 inline void Song::operator=(const Song & value)
 {
@@ -50,19 +58,14 @@ int main()
     string t_artist;
     string t_title;
 
-    cout << "Enter a song name: ";
-    getline(cin, t_title);
-    cout << "Enter the artist of the song: ";
-    getline(cin, t_artist);
+    Song song1;
+    Song song2;
 
-    Song song1(t_title, t_artist);
+    cout << "Enter a song, title then author denoted by enter: ";
+    cin >> song1;
 
-    cout << "Enter a song name: ";
-    getline(cin, t_title);
-    cout << "Enter the artist of the song: ";
-    getline(cin, t_artist);
-
-    Song song2(t_title, t_artist);
+    cout << "Enter a song, title then author denoted by enter: ";
+    cin >> song2;
 
     if(song1.is_equal(song2))
       cout << "They are the same song." << endl;
@@ -80,6 +83,7 @@ int main()
       cout << "They are different songs." << endl;
 
     cout << "Song1: " << song1 << "Song2: " << song2;
+
 
     cout << "RESTARTING TEST\n";
   }
